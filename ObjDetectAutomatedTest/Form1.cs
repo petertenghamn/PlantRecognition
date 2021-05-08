@@ -112,9 +112,12 @@ namespace ObjDetectAutomatedTest
             string imgDir = "./basic_test_images";
             if (greyscaled) imgDir = "./grey_test_images";
 
+            int iterations = 0;
+            int correct = 0;
             // Go through and run predictions on all images in the subfolders
             foreach (string imgFile in Directory.GetFiles(imgDir))
             {
+                iterations++;
                 picImage.Image = Image.FromFile(imgFile);
                 picImage.Refresh();
                 picImage.Visible = true;
@@ -128,7 +131,11 @@ namespace ObjDetectAutomatedTest
                 string prediction = singlePrediction.PredictedLabelValue;
 
                 // Add the accuracy and confidence to lists which will display the total
-                if (prediction.Equals(answer)) accuracies.Add(100f);
+                if (prediction.Equals(answer))
+                {
+                    accuracies.Add(100f);
+                    correct++;
+                }
                 else accuracies.Add(0f);
 
                 var confidence = singlePrediction.Score.Max();
@@ -137,7 +144,7 @@ namespace ObjDetectAutomatedTest
                 lb_current_output.Items.Add(addressSplit[1] + ", predicted:" + prediction + ", answer:" + answer + ", confidence:" + confidence);
 
                 // Slow it down for presentation?
-                Thread.Sleep(100);
+                //Thread.Sleep(100);
                 this.Refresh();
             }
 
@@ -148,6 +155,7 @@ namespace ObjDetectAutomatedTest
                 lb_final_output.Items.Add((greyscaleTrained ? "Greyscale Trained, " : "Plain Trained, ") + (greyscaled ? "Greyscale Test Images -" : "Plain Test Images -") + " Accuracy = " + avgAccuracy + ", Confidence = " + avgConfidence);
             else
                 lb_final_output.Items.Add("Combined Trained, " + (greyscaled ? "Greyscale Test Images -" : "Plain Test Images -") + " Accuracy = " + avgAccuracy + ", Confidence = " + avgConfidence);
+            lb_final_output.Items.Add("Iterations: " + iterations + ", Correct Prediction: " + correct + ", Incorrect Predictions: " + (iterations - correct));
             accuracies.Clear();
             confidences.Clear();
         }

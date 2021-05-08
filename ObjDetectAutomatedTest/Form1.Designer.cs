@@ -56,7 +56,7 @@ namespace ObjDetectAutomatedTest
             this.lb_current_output.FormattingEnabled = true;
             this.lb_current_output.Location = new System.Drawing.Point(444, 33);
             this.lb_current_output.Name = "lb_current_output";
-            this.lb_current_output.Size = new System.Drawing.Size(425, 225);
+            this.lb_current_output.Size = new System.Drawing.Size(425, 147);
             this.lb_current_output.TabIndex = 1;
             // 
             // label_title
@@ -71,7 +71,7 @@ namespace ObjDetectAutomatedTest
             // label_final
             // 
             this.label_final.AutoSize = true;
-            this.label_final.Location = new System.Drawing.Point(626, 337);
+            this.label_final.Location = new System.Drawing.Point(626, 259);
             this.label_final.Name = "label_final";
             this.label_final.Size = new System.Drawing.Size(62, 13);
             this.label_final.TabIndex = 3;
@@ -80,15 +80,15 @@ namespace ObjDetectAutomatedTest
             // lb_final_output
             // 
             this.lb_final_output.FormattingEnabled = true;
-            this.lb_final_output.Location = new System.Drawing.Point(444, 359);
+            this.lb_final_output.Location = new System.Drawing.Point(444, 281);
             this.lb_final_output.Name = "lb_final_output";
-            this.lb_final_output.Size = new System.Drawing.Size(425, 69);
+            this.lb_final_output.Size = new System.Drawing.Size(425, 147);
             this.lb_final_output.TabIndex = 4;
             // 
             // label_accuracy
             // 
             this.label_accuracy.AutoSize = true;
-            this.label_accuracy.Location = new System.Drawing.Point(450, 277);
+            this.label_accuracy.Location = new System.Drawing.Point(450, 195);
             this.label_accuracy.Name = "label_accuracy";
             this.label_accuracy.Size = new System.Drawing.Size(98, 13);
             this.label_accuracy.TabIndex = 5;
@@ -97,7 +97,7 @@ namespace ObjDetectAutomatedTest
             // label_confidence
             // 
             this.label_confidence.AutoSize = true;
-            this.label_confidence.Location = new System.Drawing.Point(447, 310);
+            this.label_confidence.Location = new System.Drawing.Point(447, 228);
             this.label_confidence.Name = "label_confidence";
             this.label_confidence.Size = new System.Drawing.Size(101, 13);
             this.label_confidence.TabIndex = 6;
@@ -105,14 +105,14 @@ namespace ObjDetectAutomatedTest
             // 
             // tb_confidence
             // 
-            this.tb_confidence.Location = new System.Drawing.Point(551, 307);
+            this.tb_confidence.Location = new System.Drawing.Point(551, 225);
             this.tb_confidence.Name = "tb_confidence";
             this.tb_confidence.Size = new System.Drawing.Size(318, 20);
             this.tb_confidence.TabIndex = 7;
             // 
             // tb_accuracy
             // 
-            this.tb_accuracy.Location = new System.Drawing.Point(551, 274);
+            this.tb_accuracy.Location = new System.Drawing.Point(551, 192);
             this.tb_accuracy.Name = "tb_accuracy";
             this.tb_accuracy.Size = new System.Drawing.Size(318, 20);
             this.tb_accuracy.TabIndex = 8;
