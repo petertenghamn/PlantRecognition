@@ -27,7 +27,7 @@ namespace ObjDetectV02
             }
         }
 
-        private void btnDisplay_Click(object sender, EventArgs e)
+        private async void btnDisplay_Click(object sender, EventArgs e)
         {
             // Run detection logic
             if (picImage != null)
@@ -36,13 +36,34 @@ namespace ObjDetectV02
                 {
                     output_box.Items.Clear();
 
-                    var configurationDetector = new ConfigurationDetector();
-                    var config = configurationDetector.Detect();
-                    var yolo = new YoloWrapper(config);
+                    // var configurationDetector = new YoloConfigurationDetector();
+                    // var yolo = new YoloWrapper("yolov2-tiny-voc.cfg", "yolov2-tiny-voc.weights", "voc.names"); // The small pre trained dataset
+
+                    // This part techinically only need to run once! comment out when executed
+                    /*
+                    Console.Out.WriteLine("Starting YOLOV3 Download");
+                    var repository = new YoloPreTrainedDatasetRepository();
+                    await repository.DownloadDatasetAsync("YOLOv2", ".");
+                    Console.Out.WriteLine("YOLOV3 Downloaded!");
+                    */
+
+                    using (var yoloWrapper = new YoloWrapper("yolov2.cfg", "yolov2.weights", "coco.names"))
+                    {
+                        using (MemoryStream ms = new MemoryStream())
+                        {
+                            picImage.Image.Save(ms, ImageFormat.Png);
+                            var _items= yoloWrapper.Detect(ms.ToArray()).ToList(); ;
+                            AddDetailsToPicture(picImage, _items);
+                        }
+                    }
+
+
+                    /*
                     var memoryStream = new MemoryStream();
                     picImage.Image.Save(memoryStream, ImageFormat.Png);
                     var _items = yolo.Detect(memoryStream.ToArray()).ToList();
                     AddDetailsToPicture(picImage, _items);
+                    */
                 }
                 catch (Exception err)
                 {
